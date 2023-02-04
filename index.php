@@ -25,7 +25,7 @@
         if (!isset($_GET['state'])) {
         ?>
         <button class="btn" @click="getWhitelisted = !getWhitelisted">Get Whitelisted!</button>
-        <button class="btn" @click="window.open('profile.zip')">Download the Profile</button>
+        <button class="btn" @click="download()">Download the Profile</button>
         <div class="expandable whitelist" :class="{'expand':getWhitelisted}">
             <p>This server is whitelisted for the protection of its players and core system. Please enter your Minecraft username and connect your Discord account below to gain access to the server.</p>
             <sub>No Discord credentials are stored, they are simply checked against the members of the Discord server.</sub>

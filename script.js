@@ -40,6 +40,9 @@ const app = createApp({
             const url = encodeURIComponent(window.location.href.includes('localhost:8000') ? "http://localhost:8000/discord.php" : "https://modded.genav.ch/discord.php");
             const state = encodeURIComponent(this.username);
             window.location.replace(`https://discord.com/api/oauth2/authorize?client_id=1071243292097912852&redirect_uri=${url}&response_type=code&scope=guilds%20identify&state=${state}`);
+        },
+        download() {
+            window.open("profile.zip");
         }
     }
 });
