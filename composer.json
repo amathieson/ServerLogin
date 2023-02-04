@@ -1,0 +1,7 @@
+{
+    "require": {
+        "thedudeguy/rcon": "^1.0",
+        "ext-json": "*",
+      "ext-curl": "*"
+    }
+}

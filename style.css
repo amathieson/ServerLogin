@@ -1,0 +1,299 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    background: url("frame.jpg") center;
+    background-size: cover;
+    overflow: hidden;
+}
+.backdrop > * {
+    height: 100%;
+    width: 177.77777778vh; /* 100 * 16 / 9 */
+    min-width: 100%;
+    min-height: 56.25vw; /* 100 * 9 / 16 */
+}
+.backdrop-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -95;
+    background: rgba(75, 18, 64, 0.6);
+    backdrop-filter: blur(5px);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    align-items: center;
+    padding-top: min(25vh, 10vw);
+    max-height: 100%;
+    overflow-y: scroll;
+}
+.card {
+    background: rgba(244, 215, 255, 0.75);
+    color: black;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 32rem;
+    border-radius: 1rem;
+    padding: 0.5em 1em;
+    position: relative;
+    z-index: 1;
+}
+.players {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    gap: 1em;
+}
+.player {
+    display: inline-flex;
+    height: 10rem;
+    min-width: 8rem;
+    flex-direction: column;
+}
+.player > img {
+    width: 8rem;
+}
+
+a, a:visited, a:active, a:hover {
+    color: unset;
+}
+
+button.icon {
+    background: unset;
+    border: unset;
+    cursor: pointer;
+    transition: transform ease-in-out 60ms;
+}
+button.icon:active {
+    transform: scale(75%);
+}
+
+h6 {
+    color: white;
+    outline: black;
+}
+
+hr {
+    border-color: rgb(179 40 167 / 10%);
+    border-width: 0.1px;
+    border-style: solid;
+}
+
+div::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+div::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 5px;
+}
+
+/* Handle */
+div::-webkit-scrollbar-thumb {
+    background: rgba(42, 6, 34, 0.38);
+    border-radius: 5px;
+}
+.card > button.icon {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+}
+div::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.cover {
+    z-index: 5;
+    background: rgba(195, 155, 245, 0.75);
+    backdrop-filter: blur(5px);
+    opacity: 1;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 24pt;
+    animation: ease-out;
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+@keyframes pulse {
+    0% {
+        font-size: 24pt;
+        color: rgba(0, 0, 0, 1);
+    }
+    50% {
+        font-size: 32pt;
+        color: rgba(0, 0, 0, 0.60);
+    }
+    100% {
+        font-size: 24pt;
+        color: rgba(0, 0, 0, 1);
+    }
+}
+
+.hidden-cover {
+    animation: ease-out;
+    animation-name: hideCover;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes hideCover {
+    0% {
+        opacity: 1;
+        display: flex;
+        z-index: 5;
+    }
+    99.9% {
+        opacity: 0.1;
+        display: flex;
+        z-index: 5;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+        z-index: -99;
+    }
+}
+
+.btn {
+    background: linear-gradient(0deg, rgb(194, 101, 138) 0%, rgba(253,45,157,1) 100%);
+    border: unset;
+    color: white;
+    font-weight: 600;
+    font-size: 14pt;
+    margin: 0.1em;
+    padding: 0.4em 1em;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+
+.card > h1 {
+    margin-bottom: 0.2em;
+    font-weight: 700;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 36pt;
+}
+
+.card > p, .card > button.btn {
+    margin-bottom: 1em;
+}
+
+.expandable {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 500ms ease-out;
+}
+.expand {
+    max-height: 16rem;
+    overflow-y: scroll;
+}
+
+.loading {
+    box-shadow: #ff337e 0 0 20px 0;
+    animation: ease-out;
+    animation-name: pulseShadow;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+@keyframes pulseShadow {
+    0% {
+        box-shadow: #ff337e 0 0 20px 0;
+    }
+    50% {
+        box-shadow: #ff5773 0 0 20px 5px;
+    }
+    100% {
+        box-shadow: #ff337e 0 0 20px 0;
+    }
+}
+
+.showMods {
+    text-align: left;
+    display: block;
+}
+.version {
+    background: #eb4d9d;
+    color: white;
+    font-size: 8pt;
+    vertical-align: super;
+    padding: 2px 6px;
+    border-radius: 5px;
+}
+.mod {
+    display: block;
+    text-align: left;
+    overflow-x: clip;
+    text-overflow: ellipsis;
+    max-height: 1.4em;
+    padding: 0.2em 0;
+    width: max-content;
+}
+.modList {
+    overflow-x: scroll;
+}
+.whitelist {
+    text-align: left;
+}
+
+input:focus {
+    box-shadow: #ff337e 0 0 12px 0;
+}
+input {
+    border: unset;
+    border-radius: 0.3em;
+    padding: 0.25em;
+}
+
+.discord {
+    background: #5865F2;
+    display: block;
+    margin: auto;
+}
+label.input {
+    margin-bottom: 1em;
+    display: block;
+}
